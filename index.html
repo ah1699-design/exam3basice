@@ -246,608 +246,907 @@
             { id: "c30", name: "【N】光蚵仔", rarity: "N", chance: 7.0, image: "images/N7.jpg" }
         ];
 
-        // ==========================================
-        // 教師設定區：基本電學 (三相電源、單相用銅量) + 限定娛樂穿插
-        // 圖片請確保與 HTML 檔案放在同一層目錄
+// ==========================================
+        // 教師設定區：數位邏輯設計 + 程式語言設計 (45題魔王版) + 進擊的巨人穿插
         // ==========================================
         const quizData = {
-            // --- 第 1 關：正相序圖形識別 ---
+            // --- 第 1 關：DL 數字系統 ---
             "q1": {
-                tag: "第 1 關：相序判斷",
-                text: "觀察下方的三相電壓相量圖。假設固定點在右側，相量以逆時針方向旋轉，依序經過固定點的相序為何？<br><br><img src='pos.png' style='width:100%; max-width:250px; border-radius:8px;'>",
+                tag: "第 1 關：數位邏輯 (數字系統)",
+                text: "在數字系統中，二進位數字 (1101)₂ 轉換為十進位是多少？",
                 options: [
-                    { text: "A. A-B-C (正相序)", next: "q2", isCorrect: true },
-                    { text: "B. A-C-B (負相序)", next: "q1_help", log: "Q1錯: 順序看反了" },
-                    { text: "C. 兩者皆是", next: "q1_help", log: "Q1錯: 相序只有一種" },
-                    { text: "D. 零相序", next: "q1_help", log: "Q1錯: 零相序沒有相位差" }
+                    { text: "A. 13", next: "q2", isCorrect: true },
+                    { text: "B. 11", next: "q1_help", log: "Q1錯: 轉換錯誤" },
+                    { text: "C. 15", next: "q1_help", log: "Q1錯: 這是 1111" },
+                    { text: "D. 12", next: "q1_help", log: "Q1錯: 這是 1100" }
                 ]
             },
             "q1_help": {
-                tag: "💊 救援任務：相序旋轉",
-                text: "想像你在右邊的「固定點」站著，中間的風車開始「逆時針」旋轉。第一個打到你的是A，接下來轉過來打到你的是誰？",
+                tag: "💊 救援任務：二進位權重",
+                text: "二進位由右到左的權重分別是 1, 2, 4, 8。1101 = 8(1) + 4(1) + 2(0) + 1(1) = 8 + 4 + 1。答案是？",
                 options: [
-                    { text: "A. 接著是 B，再來是 C (正相序)", next: "q1", isCorrect: true }, 
-                    { text: "B. 接著是 C，再來是 B", next: "q1_help", log: "Q1救錯: 請順著箭頭方向轉喔！" } 
+                    { text: "A. 13", next: "q1", isCorrect: true },
+                    { text: "B. 11", next: "q1_help", log: "Q1救錯: 加法要算對喔！" }
                 ]
             },
 
-            // --- 第 2 關：負相序圖形識別 ---
+            // --- 第 2 關：DL 萬用閘 ---
             "q2": {
-                tag: "第 2 關：相序判斷",
-                text: "接著觀察這張相量圖。同樣以逆時針方向旋轉，依序經過固定點的順序為何？<br><br><img src='nes.png' style='width:100%; max-width:250px; border-radius:8px;'>",
+                tag: "第 2 關：數位邏輯 (邏輯閘)",
+                text: "下列哪一種邏輯閘被稱為「萬用閘 (Universal Gate)」，因為單靠它就能組合出 AND、OR、NOT 等所有基本邏輯功能？",
                 options: [
-                    { text: "A. A-C-B (負相序)", next: "q3", isCorrect: true },
-                    { text: "B. A-B-C (正相序)", next: "q2_help", log: "Q2錯: 注意看 C 和 B 的位置互換了" },
-                    { text: "C. 無法判斷", next: "q2_help", log: "Q2錯: 箭頭跟標示很清楚" },
-                    { text: "D. 零相序", next: "q2_help", log: "Q2錯: 相位角相差120度，不是零" }
+                    { text: "A. NAND 閘", next: "q3", isCorrect: true },
+                    { text: "B. XOR 閘", next: "q2_help", log: "Q2錯: XOR 不是萬用閘" },
+                    { text: "C. AND 閘", next: "q2_help", log: "Q2錯: AND 無法做出反相(NOT)功能" },
+                    { text: "D. OR 閘", next: "q2_help", log: "Q2錯: OR 無法做出反相(NOT)功能" }
                 ]
             },
             "q2_help": {
-                tag: "💊 救援任務：逆向思考",
-                text: "注意看這張圖，A 的上面變成了 C！逆時針轉過來時，A 過去之後，下一個撞過來的是 C。這種 A-C-B 的順序稱為什麼相序？",
+                tag: "💊 救援任務：萬用閘兄弟",
+                text: "數位邏輯中有兩個知名的萬用閘，分別是反及閘(NAND)與反或閘(NOR)。請選出選項中有的那一個：",
                 options: [
-                    { text: "A. 負相序 (逆相序)", next: "q2", isCorrect: true }, 
-                    { text: "B. 正相序", next: "q2_help", log: "Q2救錯: 正相序是 A-B-C 喔" } 
+                    { text: "A. NAND 閘", next: "q2", isCorrect: true },
+                    { text: "B. XOR 閘", next: "q2_help", log: "Q2救錯: XOR 只能用來判斷相異喔" }
                 ]
             },
 
-            // --- 第 3 關：相角差 ---
+            // --- 第 3 關：DL 布林代數 ---
             "q3": {
-                tag: "第 3 關：三相基礎",
-                text: "在一個理想的平衡三相電源系統中，A、B、C 三個相電壓之間，彼此的電機角相位差是多少度？",
+                tag: "第 3 關：數位邏輯 (布林代數)",
+                text: "根據布林代數的吸收定律，運算式 A + A'B 可以簡化為什麼？",
                 options: [
-                    { text: "A. 120度", next: "q4", isCorrect: true },
-                    { text: "B. 90度", next: "q3_help", log: "Q3錯: 這是兩相制的相位差" },
-                    { text: "C. 180度", next: "q3_help", log: "Q3錯: 這是單相三線式的相位差" },
-                    { text: "D. 360度", next: "q3_help", log: "Q3錯: 這是完整一圈" }
+                    { text: "A. A + B", next: "q4", isCorrect: true },
+                    { text: "B. A", next: "q3_help", log: "Q3錯: 漏掉了 B" },
+                    { text: "C. B", next: "q3_help", log: "Q3錯: 漏掉了 A" },
+                    { text: "D. 1", next: "q3_help", log: "Q3錯: 這是 A + A' 的結果" }
                 ]
             },
             "q3_help": {
-                tag: "💊 救援任務：平分圓形",
-                text: "圓形一圈是 360 度，三相發電機為了讓發電最平穩，把線圈均勻地分成 3 等分。360 除以 3 等於多少？",
+                tag: "💊 救援任務：吸收定律",
+                text: "遇到 A + A'B 時，A 非常的強勢，它會把後面的 A' 給「吸收(吃掉)」抵消掉，只留下 B。所以剩下什麼？",
                 options: [
-                    { text: "A. 120 度", next: "q3", isCorrect: true }, 
-                    { text: "B. 90 度", next: "q3_help", log: "Q3救錯: 360 / 3 = 120 啦！" } 
+                    { text: "A. A + B", next: "q3", isCorrect: true },
+                    { text: "B. A", next: "q3_help", log: "Q3救錯: B 不能跟著被吃掉啊" }
                 ]
             },
 
-            // --- 第 4 關：電源 Y 接法 (電壓) ---
+            // --- 第 4 關：DL 笛摩根 ---
             "q4": {
-                tag: "第 4 關：Y 型接線",
-                text: "觀察下方的 Y 型 (星型) 電源接線圖。外部兩條火線之間的「線電壓 (V_L)」與內部線圈的「相電壓 (V_P)」大小關係為何？<br><br><img src='ye.png' style='width:100%; max-width:350px; border-radius:8px;'>",
+                tag: "第 4 關：數位邏輯 (笛摩根定理)",
+                text: "根據笛摩根定理 (De Morgan's Laws)，(A + B)' 等於下列何者？",
                 options: [
-                    { text: "A. V_L = √3 V_P", next: "q5", isCorrect: true },
-                    { text: "B. V_L = V_P", next: "q4_help", log: "Q4錯: 這是 Δ 接法的特性" },
-                    { text: "C. V_L = 3 V_P", next: "q4_help", log: "Q4錯: 倍率是根號3" },
-                    { text: "D. V_L = V_P / √3", next: "q4_help", log: "Q4錯: 線電壓比較大" }
+                    { text: "A. A' ⋅ B'", next: "q5", isCorrect: true },
+                    { text: "B. A' + B'", next: "q4_help", log: "Q4錯: 符號沒有變號" },
+                    { text: "C. A ⋅ B", next: "q4_help", log: "Q4錯: 沒有加上反相" },
+                    { text: "D. A' + B", next: "q4_help", log: "Q4錯: 只有部分反相" }
                 ]
             },
             "q4_help": {
-                tag: "💊 救援任務：Y的跨步",
-                text: "看圖中的 V_AB (線電壓)，它跨越了 a相 和 b相 兩個線圈的電壓。因為有120度的相位差，相加後會放大，倍率是特殊的多少？",
+                tag: "💊 救援任務：切斷與變號",
+                text: "笛摩根定理的口訣是：「切斷上面的長霸(Bar)，然後加號(+)變乘號(⋅)，乘號(⋅)變加號(+)」。",
                 options: [
-                    { text: "A. 放大 √3 倍", next: "q4", isCorrect: true }, 
-                    { text: "B. 相等不變", next: "q4_help", log: "Q4救錯: 跨過兩個線圈電壓一定會變大！" } 
+                    { text: "A. A' ⋅ B'", next: "q4", isCorrect: true },
+                    { text: "B. A' + B'", next: "q4_help", log: "Q4救錯: 加號忘記變乘號了！" }
                 ]
             },
 
-            // 🧝‍♀️ 第 5 關：娛樂穿插 (葬送的芙莉蓮)
+            // --- 第 5 關：DL 半加器 ---
             "q5": {
-                tag: "🧝‍♀️ 第 5 關：動漫放鬆 (芙莉蓮)",
-                text: "來點輕鬆的！在人氣動漫《葬送的芙莉蓮》中，身為活了千年的精靈魔法使，芙莉蓮有一個致命的弱點，經常被什麼東西給吃掉上半身？",
+                tag: "第 5 關：數位邏輯 (組合邏輯)",
+                text: "一個標準的「半加器 (Half Adder)」負責兩個單一位元的加法，請問它的兩個輸出端分別稱為什麼？",
                 options: [
-                    { text: "A. 寶箱怪", next: "q6", isCorrect: true },
-                    { text: "B. 魔王", next: "q5_help", log: "Q5錯: 魔王早就被她和勇者打敗了" },
-                    { text: "C. 巨大飛龍", next: "q5_help", log: "Q5錯: 這對她來說只是小菜一碟" },
-                    { text: "D. 魔法陷阱", next: "q5_help", log: "Q5錯: 具體來說是被偽裝成寶箱的怪物咬住" }
+                    { text: "A. 和 (Sum) 與 進位 (Carry)", next: "q6", isCorrect: true },
+                    { text: "B. 和 (Sum) 與 差 (Difference)", next: "q5_help", log: "Q5錯: 差是減法器的輸出" },
+                    { text: "C. 借位 (Borrow) 與 進位 (Carry)", next: "q5_help", log: "Q5錯: 借位是減法器" },
+                    { text: "D. 輸入 (Input) 與 輸出 (Output)", next: "q5_help", log: "Q5錯: 這是通稱" }
                 ]
             },
             "q5_help": {
-                tag: "💊 提示：貪財的精靈",
-                text: "即使徒弟費倫已經用魔法探測出那裡面有怪物，芙莉蓮還是會因為有「萬分之一的機率是魔法書」，而把頭伸進去被咬。這是什麼怪物？",
+                tag: "💊 救援任務：加法的基本",
+                text: "做加法時，我們需要寫下加起來的「總和(Sum)」，如果滿了就要往前「進位(Carry)」。",
                 options: [
-                    { text: "A. 寶箱怪 (Mimic)", next: "q5", isCorrect: true },
-                    { text: "B. 史萊姆", next: "q5_help", log: "Q5救錯: 是寶箱怪啦，名場面「好黑喔！好怕喔！」" }
+                    { text: "A. 和 (Sum) 與 進位 (Carry)", next: "q5", isCorrect: true },
+                    { text: "B. 和 (Sum) 與 差 (Difference)", next: "q5_help", log: "Q5救錯: 加法不會產生差啦！" }
                 ]
             },
 
-            // --- 第 6 關：電源 Y 接法 (電流) ---
+            // --- 第 6 關：DL 多工器 ---
             "q6": {
-                tag: "第 6 關：Y 型接線",
-                text: "承上題的 Y 型電源圖，流出外部的「線電流 (I_L)」與內部線圈的「相電流 (I_P)」大小關係為何？",
+                tag: "第 6 關：數位邏輯 (多工器)",
+                text: "設計一個 8 對 1 (8-to-1) 的多工器 (MUX)，需要幾條「選擇線 (Select Lines)」來決定讓哪一個輸入通過？",
                 options: [
-                    { text: "A. I_L = I_P (相等)", next: "q7", isCorrect: true },
-                    { text: "B. I_L = √3 I_P", next: "q6_help", log: "Q6錯: 這是 Δ 接法的特性" },
-                    { text: "C. I_L = 3 I_P", next: "q6_help", log: "Q6錯: Y型沒有分流" },
-                    { text: "D. I_L = I_P / √3", next: "q6_help", log: "Q6錯: 不會變小" }
+                    { text: "A. 3 條", next: "q7", isCorrect: true },
+                    { text: "B. 2 條", next: "q6_help", log: "Q6錯: 2條只能選 4 個" },
+                    { text: "C. 4 條", next: "q6_help", log: "Q6錯: 4條可以選 16 個" },
+                    { text: "D. 8 條", next: "q6_help", log: "Q6錯: 選擇線數量是 2 的次方" }
                 ]
             },
             "q6_help": {
-                tag: "💊 救援任務：水管直通",
-                text: "再看一次 Y 型的圖。從線圈流出來的電流，直接順著單一條線就流出去了，中間「沒有任何分岔路」。所以內部和外部的電流大小會？",
+                tag: "💊 救援任務：2的次方",
+                text: "選擇線的數量 n 與輸入端數量 N 的關係是 2^n = N。 2 的幾次方會等於 8？",
                 options: [
-                    { text: "A. 完全相等", next: "q6", isCorrect: true },
-                    { text: "B. 外部比較大", next: "q6_help", log: "Q6救錯: 沒有匯流，電流怎麼會變大？" }
+                    { text: "A. 3 條", next: "q6", isCorrect: true },
+                    { text: "B. 4 條", next: "q6_help", log: "Q6救錯: 2 的 4 次方是 16 喔！" }
                 ]
             },
 
-            // --- 第 7 關：電源 Δ 接法 (電壓) ---
+            // --- 第 7 關：DL 解碼器 ---
             "q7": {
-                tag: "第 7 關：Δ 型接線",
-                text: "接著觀察下方的 Δ 型 (三角) 電源接線圖。外部兩條火線之間的「線電壓 (V_L)」與內部線圈的「相電壓 (V_P)」大小關係為何？<br><br><img src='tre.png' style='width:100%; max-width:350px; border-radius:8px;'>",
+                tag: "第 7 關：數位邏輯 (解碼器)",
+                text: "一個具有「低態動作 (Active Low)」輸出的 3 對 8 解碼器，當選擇輸入為 011 時，哪一個輸出接腳的值會是 0？",
                 options: [
-                    { text: "A. V_L = V_P (相等)", next: "q8", isCorrect: true },
-                    { text: "B. V_L = √3 V_P", next: "q7_help", log: "Q7錯: 這是 Y 接法的特性" },
-                    { text: "C. V_L = 3 V_P", next: "q7_help", log: "Q7錯: 倍率錯誤" },
-                    { text: "D. V_L = V_P / √3", next: "q7_help", log: "Q7錯: 不會變小" }
+                    { text: "A. Y3", next: "q8", isCorrect: true },
+                    { text: "B. Y4", next: "q7_help", log: "Q7錯: 二進位 011 是 3" },
+                    { text: "C. Y2", next: "q7_help", log: "Q7錯: 二進位 011 是 3" },
+                    { text: "D. 所有的接腳都是 0", next: "q7_help", log: "Q7錯: 解碼器一次只會有一個端點動作" }
                 ]
             },
             "q7_help": {
-                tag: "💊 救援任務：並聯概念",
-                text: "觀察圖中，內部的線圈 V_ao 兩端，是不是剛好就直接接在外部的 A 線和 B 線上？這種「並聯」的接法，電壓大小會？",
+                tag: "💊 救援任務：二進位轉換",
+                text: "輸入 011 轉換成十進位就是 3。因為是低態動作，所以被選中的那隻腳會變成 0。請問是哪一隻腳？",
                 options: [
-                    { text: "A. 完全相等", next: "q7", isCorrect: true },
-                    { text: "B. 放大 √3 倍", next: "q7_help", log: "Q7救錯: 這是 Y 接法才有的特性喔！" }
+                    { text: "A. Y3", next: "q7", isCorrect: true },
+                    { text: "B. Y4", next: "q7_help", log: "Q7救錯: 011 是 3 不是 4" }
                 ]
             },
 
-            // --- 第 8 關：電源 Δ 接法 (電流) ---
+            // --- 第 8 關：DL SR觸發器 ---
             "q8": {
-                tag: "第 8 關：Δ 型接線",
-                text: "承上題的 Δ 型電源圖，流出外部的「線電流 (I_L)」與內部線圈的「相電流 (I_P)」大小關係為何？",
+                tag: "第 8 關：數位邏輯 (觸發器)",
+                text: "在基本的 SR 觸發器 (SR Flip-Flop) 中，如果同時輸入 S=1 且 R=1，會發生什麼情況？",
                 options: [
-                    { text: "A. I_L = √3 I_P", next: "q9", isCorrect: true },
-                    { text: "B. I_L = I_P (相等)", next: "q8_help", log: "Q8錯: 這是 Y 接法的特性" },
-                    { text: "C. I_L = 3 I_P", next: "q8_help", log: "Q8錯: 交流電加法要考慮角度，不能直接乘 3" },
-                    { text: "D. I_L = I_P / √3", next: "q8_help", log: "Q8錯: 兩路匯合，線電流會比較大" }
+                    { text: "A. 產生不確定的禁止狀態 (Forbidden)", next: "q9", isCorrect: true },
+                    { text: "B. 輸出反轉 (Toggle)", next: "q8_help", log: "Q8錯: 這是 JK 觸發器的特性" },
+                    { text: "C. 保持原狀態不變 (Hold)", next: "q8_help", log: "Q8錯: 這是 S=0, R=0 的狀態" },
+                    { text: "D. 輸出歸零 (Reset)", next: "q8_help", log: "Q8錯: 這是 S=0, R=1 的狀態" }
                 ]
             },
             "q8_help": {
-                tag: "💊 救援任務：節點匯流",
-                text: "在 Δ 接法中，圖上的每個節點(A, B, C)都有兩條線圈的電流匯集然後流出去。因為有相位差，相加後會放大多少倍？",
+                tag: "💊 救援任務：矛盾的命令",
+                text: "S=1 代表設定為1，R=1 代表重置為0。你同時叫它變成1又變成0，電路會發瘋，這在 SR 觸發器中是絕對不允許的！",
                 options: [
-                    { text: "A. 放大 √3 倍", next: "q8", isCorrect: true },
-                    { text: "B. 相等不變", next: "q8_help", log: "Q8救錯: 兩路水匯集一定會變大！" }
+                    { text: "A. 禁止狀態 (Forbidden)", next: "q8", isCorrect: true },
+                    { text: "B. 輸出反轉", next: "q8_help", log: "Q8救錯: 輸出反轉是高階的 JK 觸發器才做得到" }
                 ]
             },
 
-            // --- 第 9 關：負載 Δ 轉 Y ---
+            // --- 第 9 關：DL JK觸發器 ---
             "q9": {
-                tag: "第 9 關：負載轉換",
-                text: "觀察下方的負載互換圖。若右邊的三相平衡 Δ 負載，每個阻抗 Z_Δ 為 12Ω。如果我們要將它等效轉換為左邊的 Y 負載，每個 Z_Y 應該是多少？<br><br><img src='ytri.png' style='width:100%; max-width:400px; border-radius:8px;'>",
+                tag: "第 9 關：數位邏輯 (觸發器)",
+                text: "為了改善上述 SR 觸發器的缺點，發明了 JK 觸發器。當輸入 J=1 且 K=1 時，JK 觸發器的輸出會如何？",
                 options: [
-                    { text: "A. 4 Ω", next: "q10", isCorrect: true },
-                    { text: "B. 36 Ω", next: "q9_help", log: "Q9錯: 這是 Y 轉 Δ 才要乘 3" },
-                    { text: "C. 12 Ω", next: "q9_help", log: "Q9錯: 轉換後阻抗會改變" },
-                    { text: "D. 12√3 Ω", next: "q9_help", log: "Q9錯: 阻抗轉換是 3 倍的關係，不是根號 3" }
+                    { text: "A. 狀態反轉 (Toggle)", next: "q10", isCorrect: true },
+                    { text: "B. 狀態不變 (Hold)", next: "q9_help", log: "Q9錯: 這是 J=0, K=0 的狀態" },
+                    { text: "C. 禁止狀態 (Forbidden)", next: "q9_help", log: "Q9錯: JK 解決了禁止狀態的問題" },
+                    { text: "D. 輸出強制為 1", next: "q9_help", log: "Q9錯: 這是 J=1, K=0 的狀態" }
                 ]
             },
             "q9_help": {
-                tag: "💊 救援任務：口訣 Δ 大 Y 小",
-                text: "阻抗轉換口訣：「Δ (三角形) 看起來面積比較大，Y 看起來比較瘦小」。從大的 Δ 換成小的 Y，阻抗要「除以 3」。 12 ÷ 3 = ?",
+                tag: "💊 救援任務：JK的神奇進化",
+                text: "JK 觸發器最厲害的地方，就是把原本 1,1 的「當機」狀態，變成了每次脈波來就「1變0、0變1」的翻轉功能！",
                 options: [
-                    { text: "A. 4 Ω", next: "q9", isCorrect: true },
-                    { text: "B. 36 Ω", next: "q9_help", log: "Q9救錯: 這是乘法，你算反了！" }
+                    { text: "A. 狀態反轉 (Toggle)", next: "q9", isCorrect: true },
+                    { text: "B. 禁止狀態", next: "q9_help", log: "Q9救錯: JK 就是為了解決禁止狀態而生的！" }
                 ]
             },
 
-            // 🏀 第 10 關：娛樂穿插 (NBA 熱火)
+            // --- 第 10 關：DL 計數器 ---
             "q10": {
-                tag: "🏀 第 10 關：大腦休息 (NBA)",
-                text: "體育時間！NBA 邁阿密熱火隊 (Miami Heat) 隊史最偉大的傳奇球星，擁有「閃電俠 (Flash)」稱號，並為球隊拿下 3 座總冠軍的後衛是誰？",
+                tag: "第 10 關：數位邏輯 (計數器)",
+                text: "想要設計一個「除 16 (Mod-16)」的二進位漣波計數器，最少需要使用幾個正反器 (Flip-Flop)？",
                 options: [
-                    { text: "A. 德韋恩·韋德 (Dwyane Wade)", next: "q11", isCorrect: true },
-                    { text: "B. 吉米·巴特勒 (Jimmy Butler)", next: "q10_help", log: "Q10錯: 士官長很猛，但他還沒幫熱火拿過冠軍" },
-                    { text: "C. 勒布朗·詹姆斯 (LeBron James)", next: "q10_help", log: "Q10錯: 他是在熱火拿2冠，且綽號不是閃電俠" },
-                    { text: "D. 史蒂芬·柯瑞 (Stephen Curry)", next: "q10_help", log: "Q10錯: 這是勇士隊的" }
+                    { text: "A. 4 個", next: "q11", isCorrect: true },
+                    { text: "B. 3 個", next: "q10_help", log: "Q10錯: 3個只能數到 8" },
+                    { text: "C. 5 個", next: "q10_help", log: "Q10錯: 5個可以數到 32" },
+                    { text: "D. 16 個", next: "q10_help", log: "Q10錯: 不需要那麼多" }
                 ]
             },
             "q10_help": {
-                tag: "💊 提示：熱火隊魂",
-                text: "他是 3 號球衣的主人，2006 年憑一己之力逆轉獨行俠拿下首冠。他的切入速度極快，所以被 O'Neal 取名為閃電俠。",
+                tag: "💊 救援任務：2的次方又來了",
+                text: "每個正反器(FF)可以存 1 個位元(0或1)。要有 16 種狀態(0~15)，就需要 2 的 n 次方等於 16。請問 n 是多少？",
                 options: [
-                    { text: "A. 韋德 (Wade)", next: "q10", isCorrect: true },
-                    { text: "B. 詹姆斯 (LeBron)", next: "q10_help", log: "Q10救錯: LeBron 的綽號是小皇帝(King James)" }
+                    { text: "A. 4 個", next: "q10", isCorrect: true },
+                    { text: "B. 16 個", next: "q10_help", log: "Q10救錯: 數量是指數關係，不用這麼多" }
                 ]
             },
 
-            // --- 第 11 關：負載 Y 轉 Δ ---
+            // ⚔️ 第 11 關：AOT 1 ---
             "q11": {
-                tag: "第 11 關：負載轉換",
-                text: "承上題的觀念。如果已知平衡的 Y 型負載每相阻抗 Z_Y = 10Ω，當它等效轉換為 Δ 型負載時，每相阻抗 Z_Δ 變成多少？",
+                tag: "⚔️ 第 11 關：大腦休息 (進擊的巨人)",
+                text: "動漫時間！在《進擊的巨人》中，負責走出牆外探索世界、對抗巨人的「調查兵團」，他們的徽章圖案是什麼？",
                 options: [
-                    { text: "A. 30 Ω", next: "q12", isCorrect: true },
-                    { text: "B. 10/3 Ω", next: "q11_help", log: "Q11錯: 這是從 Δ 轉 Y 才會變小" },
-                    { text: "C. 10 Ω", next: "q11_help", log: "Q11錯: 轉換後阻抗必定改變" },
-                    { text: "D. 10√3 Ω", next: "q11_help", log: "Q11錯: 阻抗轉換不用根號3" }
+                    { text: "A. 自由之翼 (雙翼)", next: "q12", isCorrect: true },
+                    { text: "B. 兩朵玫瑰", next: "q11_help", log: "Q11錯: 這是駐紮兵團的徽章" },
+                    { text: "C. 獨角獸", next: "q11_help", log: "Q11錯: 這是憲兵團的徽章" },
+                    { text: "D. 雙劍交叉", next: "q11_help", log: "Q11錯: 這是訓練兵團的徽章" }
                 ]
             },
             "q11_help": {
-                tag: "💊 救援任務：從小變大",
-                text: "再次回想口訣：「Δ 大，Y 小」。這次是從瘦小的 Y 轉換成大大的 Δ，所以阻抗要「乘以 3」。 10 × 3 = ?",
+                tag: "💊 提示：嚮往天空",
+                text: "調查兵團的人們不願被困在牆內，嚮往著像鳥兒一樣飛向牆外的自由。所以他們的徽章是？",
                 options: [
-                    { text: "A. 30 Ω", next: "q11", isCorrect: true },
-                    { text: "B. 3.33 Ω", next: "q11_help", log: "Q11救錯: 你又用除法了！" }
+                    { text: "A. 自由之翼", next: "q11", isCorrect: true },
+                    { text: "B. 獨角獸", next: "q11_help", log: "Q11救錯: 獨角獸是躲在內地爽的憲兵團啦" }
                 ]
             },
 
-            // --- 第 12 關：單相用銅量比較 ---
+            // --- 第 12 關：PL 變數命名 ---
             "q12": {
-                tag: "第 12 關：配電用銅量",
-                text: "統測必考題！單相三線式 (1Φ3W) 110V/220V 系統，若與單相二線式 (1Φ2W) 110V 系統傳輸「相同的總功率」，在相同距離與相同線路損失下，1Φ3W 的總用銅量是 1Φ2W 的多少倍？",
+                tag: "第 12 關：程式設計 (基礎)",
+                text: "在 C/C++ 語言中，下列何者是「合法」的變數名稱？",
                 options: [
-                    { text: "A. 3/8 (或 37.5%)", next: "q13", isCorrect: true },
-                    { text: "B. 3/4 (或 75%)", next: "q12_help", log: "Q12錯: 這是三相三線對單相二線的倍率" },
-                    { text: "C. 1/3 (或 33.3%)", next: "q12_help", log: "Q12錯: 數值錯誤" },
-                    { text: "D. 8/3", next: "q12_help", log: "Q12錯: 顛倒了，1Φ3W 比較省銅線" }
+                    { text: "A. _score", next: "q13", isCorrect: true },
+                    { text: "B. 2nd_place", next: "q12_help", log: "Q12錯: 不能以數字開頭" },
+                    { text: "C. int", next: "q12_help", log: "Q12錯: 不能使用保留字" },
+                    { text: "D. my-name", next: "q12_help", log: "Q12錯: 減號是運算子，不能用在名字" }
                 ]
             },
             "q12_help": {
-                tag: "💊 救援任務：省錢大作戰",
-                text: "因為 1Φ3W 利用了 220V 來傳輸，電流少一半，電線可以買超細的！計算結果是最經典的分數「八分之三」。",
+                tag: "💊 救援任務：命名規則",
+                text: "變數名稱只能由「英文字母、數字、底線(_)」組成，而且「絕對不可以」用數字開頭！請選出唯一符合規則的：",
                 options: [
-                    { text: "A. 3/8", next: "q12", isCorrect: true },
-                    { text: "B. 3/4", next: "q12_help", log: "Q12救錯: 記錯數字了，八分之三才是對的！" }
+                    { text: "A. _score", next: "q12", isCorrect: true },
+                    { text: "B. 2nd_place", next: "q12_help", log: "Q12救錯: 數字開頭直接報錯喔" }
                 ]
             },
 
-            // --- 第 13 關：單相三線的優點 ---
+            // --- 第 13 關：PL 資料型態 ---
             "q13": {
-                tag: "第 13 關：配電系統",
-                text: "台灣一般家庭普遍採用「單相三線式 (1Φ3W)」配電，請問它最主要的優點是什麼？",
+                tag: "第 13 關：程式設計 (資料型態)",
+                text: "在常見的 C/C++ 編譯器中，宣告一個標準整數 `int`，通常會在記憶體中佔用多少位元組 (Bytes)？",
                 options: [
-                    { text: "A. 可同時提供 110V 與 220V 兩種電壓", next: "q14", isCorrect: true },
-                    { text: "B. 可以讓家電永遠不會壞", next: "q13_help", log: "Q13錯: 沒有這種神級配電" },
-                    { text: "C. 電流完全為零，最安全", next: "q13_help", log: "Q13錯: 沒電流怎麼用電" },
-                    { text: "D. 只有它能使用三相馬達", next: "q13_help", log: "Q13錯: 這是單相電，推不動三相馬達" }
+                    { text: "A. 4 Bytes", next: "q14", isCorrect: true },
+                    { text: "B. 1 Byte", next: "q13_help", log: "Q13錯: 這是 char 的大小" },
+                    { text: "C. 2 Bytes", next: "q13_help", log: "Q13錯: 這是 short 的大小" },
+                    { text: "D. 8 Bytes", next: "q13_help", log: "Q13錯: 這是 double 的大小" }
                 ]
             },
             "q13_help": {
-                tag: "💊 救援任務：家裡的冷氣",
-                text: "家裡的電視插座通常是平的 (110V)，但冷氣的插座通常是圓孔或 T 型的 (220V)。單相三線式最大的好處就是能同時供應這兩種什麼？",
+                tag: "💊 救援任務：記憶體容量",
+                text: "字元(char)最輕巧佔 1 Byte，標準整數(int)與單精度浮點數(float)都是它的 4 倍。所以是？",
                 options: [
-                    { text: "A. 兩種電壓 (110V/220V)", next: "q13", isCorrect: true },
-                    { text: "B. 兩種水壓", next: "q13_help", log: "Q13救錯: 基本電學不考水電工啦！" }
+                    { text: "A. 4 Bytes", next: "q13", isCorrect: true },
+                    { text: "B. 1 Byte", next: "q13_help", log: "Q13救錯: 1 Byte 只能存一個字母喔" }
                 ]
             },
 
-            // --- 第 14 關：單相三線中性線 ---
+            // --- 第 14 關：PL 算術運算 ---
             "q14": {
-                tag: "第 14 關：中性線電流",
-                text: "在單相三線式 (1Φ3W) 系統中，如果 A 線 (火線) 和 B 線 (火線) 接的 110V 負載「完全平衡 (阻抗一樣大)」，此時流過中性線 (水線/N線) 的電流是多少？",
+                tag: "第 14 關：程式設計 (運算子)",
+                text: "執行運算式 `15 % 4` (取餘數運算子) 的結果為何？",
                 options: [
-                    { text: "A. 0 A", next: "q15", isCorrect: true },
-                    { text: "B. A線電流的兩倍", next: "q14_help", log: "Q14錯: 兩邊電流方向相反，會互相抵消" },
-                    { text: "C. 與火線電流相等", next: "q14_help", log: "Q14錯: 只有不平衡時才有電流" },
-                    { text: "D. 無限大", next: "q14_help", log: "Q14錯: 短路才會無限大" }
+                    { text: "A. 3", next: "q15", isCorrect: true },
+                    { text: "B. 2", next: "q14_help", log: "Q14錯: 計算錯誤" },
+                    { text: "C. 3.75", next: "q14_help", log: "Q14錯: % 只能用於整數找餘數" },
+                    { text: "D. 0", next: "q14_help", log: "Q14錯: 15 不能被 4 整除" }
                 ]
             },
             "q14_help": {
-                tag: "💊 救援任務：完美抵消",
-                text: "上面火線推下來的電流，剛好等於下面火線拉回去的電流。一推一拉完全抵消，所以中間那條(中性線)就沒有電流經過了。",
+                tag: "💊 救援任務：小學除法",
+                text: "「%」在程式裡叫做「取餘數」。15 除以 4，等於 3 ... 餘下多少？ (15 - 12 = ?)",
                 options: [
-                    { text: "A. 0 A (完全抵消)", next: "q14", isCorrect: true },
-                    { text: "B. 兩倍大", next: "q14_help", log: "Q14救錯: 是相減，不是相加！" }
+                    { text: "A. 3", next: "q14", isCorrect: true },
+                    { text: "B. 2", next: "q14_help", log: "Q14救錯: 減法算錯啦" }
                 ]
             },
 
-            // 📱 第 15 關：娛樂穿插 (NBA 手遊)
+            // --- 第 15 關：PL 關係運算 ---
             "q15": {
-                tag: "📱 第 15 關：大腦休息 (手遊)",
-                text: "手遊時間！在目前熱門的《NBA 2K Mobile》或《NBA Infinite》等籃球手遊中，玩家若想把 Curry 或 LeBron 加入自己的球隊，通常最核心且最刺激的系統機制是什麼？",
+                tag: "第 15 關：程式設計 (條件判斷)",
+                text: "在條件判斷 (if) 中，用來檢查「左右兩邊是否相等」的運算子是哪一個？",
                 options: [
-                    { text: "A. 抽卡包 / 轉蛋 (Gacha)", next: "q16", isCorrect: true },
-                    { text: "B. 寫信跟 NBA 官方索取", next: "q15_help", log: "Q15錯: 官方不會理你" },
-                    { text: "C. 在遊戲裡種田賺錢", next: "q15_help", log: "Q15錯: 這是農場遊戲" },
-                    { text: "D. 考過基本電學才能獲得", next: "q15_help", log: "Q15錯: 這是老師的幻想" }
+                    { text: "A. ==", next: "q16", isCorrect: true },
+                    { text: "B. =", next: "q15_help", log: "Q15錯: 一個等號是『指定(賦值)』" },
+                    { text: "C. !=", next: "q15_help", log: "Q15錯: 這是『不等於』" },
+                    { text: "D. <>", next: "q15_help", log: "Q15錯: C/C++ 不用這個符號" }
                 ]
             },
             "q15_help": {
-                tag: "💊 提示：課金的力量",
-                text: "就像我們現在玩的這個系統一樣！你要拿到稀有卡片，通常要靠運氣去「抽」什麼？",
+                tag: "💊 救援任務：雙重確認",
+                text: "單一一個 `=` 是把右邊的數字塞給左邊。如果要問電腦「這兩個一樣嗎？」，必須使用「兩個」等號！",
                 options: [
-                    { text: "A. 抽卡包 (轉蛋)", next: "q15", isCorrect: true },
-                    { text: "B. 在路上撿", next: "q15_help", log: "Q15救錯: 這是寶可夢 GO 啦" }
+                    { text: "A. ==", next: "q15", isCorrect: true },
+                    { text: "B. =", next: "q15_help", log: "Q15救錯: 單一等號會變成賦值，引發大Bug！" }
                 ]
             },
 
-            // --- 第 16 關：三相總功率公式 (線參數) ---
+            // --- 第 16 關：PL 邏輯運算 ---
             "q16": {
-                tag: "第 16 關：功率計算",
-                text: "欲計算平衡三相負載的「總有效功率 (P_T)」，如果使用外部量測到的「線電壓 (V_L)」與「線電流 (I_L)」來算，正確公式為何？",
+                tag: "第 16 關：程式設計 (邏輯運算)",
+                text: "運算式 `(5 > 3) || (2 > 4)` (邏輯 OR) 的結果為何？",
                 options: [
-                    { text: "A. P_T = √3 × V_L × I_L × cosθ", next: "q17", isCorrect: true },
-                    { text: "B. P_T = 3 × V_L × I_L × cosθ", next: "q16_help", log: "Q16錯: 3倍是用相參數算的" },
-                    { text: "C. P_T = V_L × I_L × cosθ", next: "q16_help", log: "Q16錯: 漏掉係數了" },
-                    { text: "D. P_T = √3 × V_L × I_L × sinθ", next: "q16_help", log: "Q16錯: sin 是算無效(虛)功率" }
+                    { text: "A. True (真)", next: "q17", isCorrect: true },
+                    { text: "B. False (假)", next: "q16_help", log: "Q16錯: OR 只要有一邊對，就算對" },
+                    { text: "C. 5", next: "q16_help", log: "Q16錯: 邏輯運算結果只會是真或假" },
+                    { text: "D. 報錯", next: "q16_help", log: "Q16錯: 語法合法" }
                 ]
             },
             "q16_help": {
-                tag: "💊 救援任務：線的專屬係數",
-                text: "不論是 Y 或 Δ，經過換算後，只要公式裡面寫的是外部的「線」(Line) 參數，前面的專屬係數就一定是多少？",
+                tag: "💊 救援任務：寬容的 OR",
+                text: "「||」代表邏輯 OR (或者)。它的個性很寬容，只要「左邊或右邊有一個是對的」，結果就會是 True。左邊 (5>3) 是對的，所以？",
                 options: [
-                    { text: "A. 根號3 (√3)", next: "q16", isCorrect: true },
-                    { text: "B. 3", next: "q16_help", log: "Q16救錯: 3 是內部相參數專用的喔" }
+                    { text: "A. True (真)", next: "q16", isCorrect: true },
+                    { text: "B. False (假)", next: "q16_help", log: "Q16救錯: AND 才是嚴格要求兩邊都要對！" }
                 ]
             },
 
-            // --- 第 17 關：三相總功率公式 (相參數) ---
+            // --- 第 17 關：PL IF 條件 ---
             "q17": {
-                tag: "第 17 關：功率計算",
-                text: "承上題，如果我們改用內部的「相電壓 (V_P)」與「相電流 (I_P)」來計算總有效功率 (P_T)，公式應該變成什麼？",
+                tag: "第 17 關：程式設計 (流程控制)",
+                text: "執行 `if (0) { a=1; } else { a=2; }` 後，a 的值為何？",
                 options: [
-                    { text: "A. P_T = 3 × V_P × I_P × cosθ", next: "q18", isCorrect: true },
-                    { text: "B. P_T = √3 × V_P × I_P × cosθ", next: "q17_help", log: "Q17錯: 這是用線參數算的係數" },
-                    { text: "C. P_T = V_P × I_P × cosθ", next: "q17_help", log: "Q17錯: 這只有單相的功率" },
-                    { text: "D. P_T = 3 × V_P × I_P × sinθ", next: "q17_help", log: "Q17錯: sin 是用來算虛功率的" }
+                    { text: "A. 2", next: "q18", isCorrect: true },
+                    { text: "B. 1", next: "q17_help", log: "Q17錯: 括號內為 0，代表條件不成立" },
+                    { text: "C. 0", next: "q17_help", log: "Q17錯: a 被指定為 2 了" },
+                    { text: "D. 程式報錯", next: "q17_help", log: "Q17錯: C/C++ 中數字可以直接當作條件" }
                 ]
             },
             "q17_help": {
-                tag: "💊 救援任務：三個相的總和",
-                text: "三相系統顧名思義就是有「三個相圈」。既然你已經知道單一相的功率是 V_P × I_P × cosθ，那總功率當然是直接把它乘以幾倍？",
+                tag: "💊 救援任務：真假數字",
+                text: "在 C/C++ 中，「0 代表 False(假)，任何非 0 的數字都代表 True(真)」。括號裡是 0，代表條件不成立，會執行 else 區塊。所以？",
                 options: [
-                    { text: "A. 乘上 3 倍", next: "q17", isCorrect: true },
-                    { text: "B. 乘上 √3 倍", next: "q17_help", log: "Q17救錯: 單純相加就是 3 啦！" }
+                    { text: "A. 2", next: "q17", isCorrect: true },
+                    { text: "B. 1", next: "q17_help", log: "Q17救錯: 0 是 False，進不去 if 裡面喔" }
                 ]
             },
 
-            // --- 第 18 關：三相四線中性線 ---
+            // --- 第 18 關：PL SWITCH ---
             "q18": {
-                tag: "第 18 關：中性線電流",
-                text: "在「三相四線式 (3Φ4W)」Y型供電系統中，如果三相的負載完全平衡，請問流過第四條「中性線 (N線)」的電流是多少？",
+                tag: "第 18 關：程式設計 (多重選擇)",
+                text: "在 `switch` 敘述中，用來「跳出」當前 switch 區塊，防止繼續往下執行的關鍵字是？",
                 options: [
-                    { text: "A. 0 A", next: "q19", isCorrect: true },
-                    { text: "B. 線電流的 3 倍", next: "q18_help", log: "Q18錯: 三相電流相角差120度，向量相加為零" },
-                    { text: "C. 線電流的 √3 倍", next: "q18_help", log: "Q18錯: 這不是電壓換算" },
-                    { text: "D. 無法預測", next: "q18_help", log: "Q18錯: 平衡狀態下是可以預測的" }
+                    { text: "A. break", next: "q19", isCorrect: true },
+                    { text: "B. continue", next: "q18_help", log: "Q18錯: 這是用在迴圈的" },
+                    { text: "C. exit", next: "q18_help", log: "Q18錯: 這是直接關閉整個程式" },
+                    { text: "D. return", next: "q18_help", log: "Q18錯: 這是跳出整個函式" }
                 ]
             },
             "q18_help": {
-                tag: "💊 救援任務：完美的平衡",
-                text: "三相電流相差 120 度，就像三個人在一個圓圈的三邊用同樣的力氣拉一條繩子。拉力互相抵消，中間的繩子不會動。所以電流是？",
+                tag: "💊 救援任務：煞車系統",
+                text: "switch 結構如果沒有加「煞車」，它會一路往下執行 (fall-through)。用來煞車跳出的英文字是？",
                 options: [
-                    { text: "A. 0 A (完全抵消)", next: "q18", isCorrect: true },
-                    { text: "B. 很大", next: "q18_help", log: "Q18救錯: 平衡時互相抵消，不會有電流" }
+                    { text: "A. break", next: "q18", isCorrect: true },
+                    { text: "B. continue", next: "q18_help", log: "Q18救錯: continue 不能用在 switch 裡" }
                 ]
             },
 
-            // --- 第 19 關：V-V接線容量 ---
+            // --- 第 19 關：PL FOR 迴圈 ---
             "q19": {
-                tag: "第 19 關：變壓器故障",
-                text: "三台變壓器原本接成 Δ-Δ 供應三相電源，若其中一台燒毀，剩下的兩台可以改接成「V-V 接線」繼續臨時供電。請問 V-V 接線的總容量，剩下原本 Δ-Δ 總容量的百分之多少？",
+                tag: "第 19 關：程式設計 (迴圈)",
+                text: "迴圈 `for(int i = 0; i < 5; i++)` 裡面的主體程式，總共會被執行幾次？",
                 options: [
-                    { text: "A. 57.7% (即 1/√3)", next: "q20", isCorrect: true },
-                    { text: "B. 86.6% (即 √3/2)", next: "q19_help", log: "Q19錯: 這是兩台變壓器的利用率" },
-                    { text: "C. 66.7% (即 2/3)", next: "q19_help", log: "Q19錯: 不是單純的數學比例，要考慮相位角" },
-                    { text: "D. 33.3% (即 1/3)", next: "q19_help", log: "Q19錯: 太低了" }
+                    { text: "A. 5 次", next: "q20", isCorrect: true },
+                    { text: "B. 4 次", next: "q19_help", log: "Q19錯: 忘記算 i=0 的那一次了" },
+                    { text: "C. 6 次", next: "q19_help", log: "Q19錯: 當 i=5 時條件不成立，不會進去" },
+                    { text: "D. 無限次", next: "q19_help", log: "Q19錯: i 每次都會加 1，一定會停" }
                 ]
             },
             "q19_help": {
-                tag: "💊 救援任務：經典密碼 577",
-                text: "這題是統測必背的死背題！壞掉一台後，因為向量關係，供電能力大減，只剩下原本的「根號三分之一」。換算成百分比，開頭是 57。是多少？",
+                tag: "💊 救援任務：手指數一數",
+                text: "我們跟著電腦算一次：i=0, 1, 2, 3, 4 (進去5次)，當 i 變成 5 時，發現不小於 5，直接離開。總共幾次？",
                 options: [
-                    { text: "A. 57.7%", next: "q19", isCorrect: true },
-                    { text: "B. 86.6%", next: "q19_help", log: "Q19救錯: 86.6 是另一個常考的「利用率」數字" }
+                    { text: "A. 5 次", next: "q19", isCorrect: true },
+                    { text: "B. 4 次", next: "q19_help", log: "Q19救錯: 從 0 數到 4 有五個數字喔" }
                 ]
             },
 
-            // ⚡ 第 20 關：娛樂穿插 (寶可夢)
+            // --- 第 20 關：PL DO-WHILE ---
             "q20": {
-                tag: "⚡ 第 20 關：大腦休息 (寶可夢)",
-                text: "呼應一下基本電學！在全球知名的《寶可夢》系列中，招牌神獸「皮卡丘」最擅長使用十萬伏特，請問牠是什麼屬性的寶可夢？",
+                tag: "第 20 關：程式設計 (迴圈)",
+                text: "`while` 迴圈與 `do-while` 迴圈最大的差異是什麼？",
                 options: [
-                    { text: "A. 電屬性", next: "q21", isCorrect: true },
-                    { text: "B. 火屬性", next: "q20_help", log: "Q20錯: 噴火龍才是火屬性" },
-                    { text: "C. 水屬性", next: "q20_help", log: "Q20錯: 傑尼龜才是水屬性" },
-                    { text: "D. 光屬性", next: "q20_help", log: "Q20錯: 寶可夢沒有光屬性" }
+                    { text: "A. do-while 無論條件為何，至少會執行 1 次", next: "q21", isCorrect: true },
+                    { text: "B. while 至少會執行 1 次", next: "q20_help", log: "Q20錯: while 如果一開始條件不符，0 次就結束了" },
+                    { text: "C. do-while 只能用遞減計數", next: "q20_help", log: "Q20錯: 沒有這種限制" },
+                    { text: "D. 沒有差別，只是寫法不同", next: "q20_help", log: "Q20錯: 執行順序大不同" }
                 ]
             },
             "q20_help": {
-                tag: "💊 提示：十萬伏特",
-                text: "皮卡丘臉頰上有兩個紅色的電氣袋，生氣時會放出強烈的「電流」。想當然牠的屬性是？",
+                tag: "💊 救援任務：先斬後奏",
+                text: "do 就是「先做」的意思。`do-while` 的精神是「先做一次再說，做完再來檢查條件」。所以它保底一定會執行幾次？",
                 options: [
-                    { text: "A. 電屬性", next: "q20", isCorrect: true },
-                    { text: "B. 草屬性", next: "q20_help", log: "Q20救錯: 草會導電，但牠不是草系啦！" }
+                    { text: "A. 至少執行 1 次", next: "q20", isCorrect: true },
+                    { text: "B. 可能 0 次", next: "q20_help", log: "Q20救錯: 這是普通的 while 迴圈" }
                 ]
             },
 
-            // --- 第 21 關：V-V接線利用率 ---
+            // ⚔️ 第 21 關：AOT 2 ---
             "q21": {
-                tag: "第 21 關：變壓器效率",
-                text: "承第19題，那兩台剩下的變壓器接成 V-V 接線後，雖然能撐住場面，但它們並不能發揮 100% 的實力。請問 V-V 接線的「設備利用率」是多少？",
+                tag: "⚔️ 第 21 關：大腦休息 (進擊的巨人)",
+                text: "在故事一開始，一腳踢破瑪利亞之牆大門，讓巨人湧入城鎮的「超大型巨人」，其真實身分是誰？",
                 options: [
-                    { text: "A. 86.6% (即 √3/2)", next: "q22", isCorrect: true },
-                    { text: "B. 57.7% (即 1/√3)", next: "q21_help", log: "Q21錯: 這是總容量比" },
-                    { text: "C. 100%", next: "q21_help", log: "Q21錯: 因相位差，無法 100% 利用" },
-                    { text: "D. 50%", next: "q21_help", log: "Q21錯: 比 50% 高" }
+                    { text: "A. 貝爾托特", next: "q22", isCorrect: true },
+                    { text: "B. 萊納", next: "q21_help", log: "Q21錯: 萊納是盔甲巨人" },
+                    { text: "C. 亞妮", next: "q21_help", log: "Q21錯: 亞妮是女巨人" },
+                    { text: "D. 吉克", next: "q21_help", log: "Q21錯: 吉克是野獸巨人" }
                 ]
             },
             "q21_help": {
-                tag: "💊 救援任務：經典密碼 866",
-                text: "剛剛背了 57.7% 是容量比。這個數字是另一個必考題：兩台變壓器自己覺得很累，只能發揮出「二分之根號三」的實力。開頭是 86 的數字是？",
+                tag: "💊 提示：汗流浹背的高個子",
+                text: "他平時個性溫和、總是流著汗，身高很高，是萊納最好的朋友。",
                 options: [
-                    { text: "A. 86.6%", next: "q21", isCorrect: true },
-                    { text: "B. 57.7%", next: "q21_help", log: "Q21救錯: 這個才是容量比，別搞混囉" }
+                    { text: "A. 貝爾托特", next: "q21", isCorrect: true },
+                    { text: "B. 萊納", next: "q21_help", log: "Q21救錯: 萊納負責撞破內門啦" }
                 ]
             },
 
-            // --- 第 22 關：功率實戰計算 ---
+            // --- 第 22 關：DL 移位暫存器 ---
             "q22": {
-                tag: "第 22 關：實戰計算",
-                text: "一個平衡三相負載，測得線電壓為 100√3 V，線電流為 10 A，功率因數(cosθ)為 0.8。請問其總有效功率 P_T 是多少瓦特(W)？",
+                tag: "第 22 關：數位邏輯 (暫存器)",
+                text: "下列哪一種移位暫存器 (Shift Register) 常用於「時間延遲 (Time Delay)」的應用？",
                 options: [
-                    { text: "A. 2400 W", next: "q23", isCorrect: true },
-                    { text: "B. 800√3 W", next: "q22_help", log: "Q22錯: 忘記乘以前面的 √3 公式係數了" },
-                    { text: "C. 1385 W", next: "q22_help", log: "Q22錯: 算錯啦" },
-                    { text: "D. 3000 W", next: "q22_help", log: "Q22錯: 忘記乘以功率因數 0.8" }
+                    { text: "A. 串入串出 (SISO)", next: "q23", isCorrect: true },
+                    { text: "B. 串入並出 (SIPO)", next: "q22_help", log: "Q22錯: 用於串列轉並列通訊" },
+                    { text: "C. 並入串出 (PISO)", next: "q22_help", log: "Q22錯: 用於並列轉串列通訊" },
+                    { text: "D. 並入並出 (PIPO)", next: "q22_help", log: "Q22錯: 這是基本資料儲存" }
                 ]
             },
             "q22_help": {
-                tag: "💊 救援任務：代入公式",
-                text: "公式：P = √3 × V_L × I_L × cosθ。 <br>代入數字：√3 × (100√3) × 10 × 0.8。<br>兩個根號3相乘變成3，所以是 3 × 100 × 10 × 0.8 = ?",
+                tag: "💊 救援任務：排隊過隧道",
+                text: "資料一個接一個「排隊進去」，然後在裡面慢慢移動，最後再一個接一個「排隊出來」，藉此拖延資料到達的時間。這是哪一種？",
                 options: [
-                    { text: "A. 2400 W", next: "q22", isCorrect: true },
-                    { text: "B. 800 W", next: "q22_help", log: "Q22救錯: 3 忘記乘進去了！" }
+                    { text: "A. 串入串出 (SISO)", next: "q22", isCorrect: true },
+                    { text: "B. 串入並出 (SIPO)", next: "q22_help", log: "Q22救錯: 並出是一次全部衝出來，就沒有延遲效果了" }
                 ]
             },
 
-            // --- 第 23 關：Y接法電壓超前 ---
+            // --- 第 23 關：DL D/A轉換器 ---
             "q23": {
-                tag: "第 23 關：Y型相位角",
-                text: "在正相序的 Y 型接線系統中 (請回憶 ye.png 圖)，線電壓 (如 V_AB) 的角度會比對應的相電壓 (V_ao) 「超前」或「落後」多少度？",
+                tag: "第 23 關：數位邏輯 (資料轉換)",
+                text: "一個 8 位元 (8-bit) 的數位類比轉換器 (DAC)，總共可以產生多少種不同的類比輸出狀態？",
                 options: [
-                    { text: "A. 超前 30 度", next: "q24", isCorrect: true },
-                    { text: "B. 落後 30 度", next: "q23_help", log: "Q23錯: 這是負相序才會發生的" },
-                    { text: "C. 超前 120 度", next: "q23_help", log: "Q23錯: 120度是各相之間的差距" },
-                    { text: "D. 完全同相 (0度)", next: "q23_help", log: "Q23錯: 只有 Δ 接法的電壓才會同相" }
+                    { text: "A. 256 種", next: "q24", isCorrect: true },
+                    { text: "B. 8 種", next: "q23_help", log: "Q23錯: 這是位元數" },
+                    { text: "C. 64 種", next: "q23_help", log: "Q23錯: 這是 6-bit" },
+                    { text: "D. 128 種", next: "q23_help", log: "Q23錯: 這是 7-bit" }
                 ]
             },
             "q23_help": {
-                tag: "💊 救援任務：Y電壓跑得快",
-                text: "統測死背口訣：「Y接法，電壓放大√3倍，角度超前30度」。只要是正相序的 Y 接法，線電壓都會跑在相電壓前面多少度？",
+                tag: "💊 救援任務：2的指數",
+                text: "每個位元有 0 或 1 兩種狀態。8 位元代表 2 的 8 次方。請計算 2×2×2×2×2×2×2×2 = ?",
                 options: [
-                    { text: "A. 超前 30 度", next: "q23", isCorrect: true },
-                    { text: "B. 落後 30 度", next: "q23_help", log: "Q23救錯: Y的電壓是超前喔！" }
+                    { text: "A. 256", next: "q23", isCorrect: true },
+                    { text: "B. 128", next: "q23_help", log: "Q23救錯: 少乘一個 2 了" }
                 ]
             },
 
-            // --- 第 24 關：Δ接法電流落後 ---
+            // --- 第 24 關：DL 記憶體特性 ---
             "q24": {
-                tag: "第 24 關：Δ型相位角",
-                text: "在正相序的 Δ 型負載中 (請回憶 tre.png 圖)，線電流 (如 I_A) 的角度會比對應的相電流 (I_a) 「超前」或「落後」多少度？",
+                tag: "第 24 關：數位邏輯 (記憶體)",
+                text: "下列哪一種記憶體屬於「揮發性 (Volatile)」記憶體，也就是電源關閉後，裡面的資料就會消失？",
                 options: [
-                    { text: "A. 落後 30 度", next: "q25", isCorrect: true },
-                    { text: "B. 超前 30 度", next: "q24_help", log: "Q24錯: 這是 Y 接法電壓的特性" },
-                    { text: "C. 落後 120 度", next: "q24_help", log: "Q24錯: 角度錯誤" },
-                    { text: "D. 完全同相 (0度)", next: "q24_help", log: "Q24錯: 只有 Y 接法的電流才會同相" }
+                    { text: "A. RAM (隨機存取記憶體)", next: "q25", isCorrect: true },
+                    { text: "B. ROM (唯讀記憶體)", next: "q24_help", log: "Q24錯: ROM 斷電不會消失" },
+                    { text: "C. EEPROM", next: "q24_help", log: "Q24錯: Flash ROM 斷電不會消失" },
+                    { text: "D. 硬碟 (HDD)", next: "q24_help", log: "Q24錯: 硬碟當然能永久保存資料" }
                 ]
             },
             "q24_help": {
-                tag: "💊 救援任務：Δ電流跑得慢",
-                text: "統測死背口訣：「Δ接法跟Y剛好相反。Δ電流放大√3倍，但角度會變慢(落後)30度」。所以線電流會？",
+                tag: "💊 救援任務：工作記憶",
+                text: "電腦的「主記憶體」主要是用來暫存正在執行的程式，重開機就會清空。這就是 RAM！",
                 options: [
-                    { text: "A. 落後 30 度", next: "q24", isCorrect: true },
-                    { text: "B. 超前 30 度", next: "q24_help", log: "Q24救錯: Δ 的電流是落後喔！" }
+                    { text: "A. RAM", next: "q24", isCorrect: true },
+                    { text: "B. ROM", next: "q24_help", log: "Q24救錯: ROM 是用來存開機程式，永遠不能忘記的" }
                 ]
             },
 
-            // 🧝‍♀️ 第 25 關：娛樂穿插 (葬送的芙莉蓮 2)
+            // --- 第 25 關：DL 邏輯族 ---
             "q25": {
-                tag: "🧝‍♀️ 第 25 關：動漫放鬆 (芙莉蓮)",
-                text: "在《葬送的芙莉蓮》中，常常面無表情、負責吐槽芙莉蓮，同時也是極具天賦的人類魔法使「徒弟」，她的名字是？",
+                tag: "第 25 關：數位邏輯 (邏輯族)",
+                text: "現代積體電路中最常使用的 CMOS 邏輯族，主要是由哪一種半導體元件所構成？",
                 options: [
-                    { text: "A. 費倫 (Fern)", next: "q26", isCorrect: true },
-                    { text: "B. 修塔爾克", next: "q25_help", log: "Q25錯: 這是拿斧頭的戰士" },
-                    { text: "C. 欣梅爾", next: "q25_help", log: "Q25錯: 這是帥氣的勇者" },
-                    { text: "D. 海塔", next: "q25_help", log: "Q25錯: 這是愛喝酒的僧侶" }
+                    { text: "A. MOSFET (金氧半場效電晶體)", next: "q26", isCorrect: true },
+                    { text: "B. BJT (雙極性接面電晶體)", next: "q25_help", log: "Q25錯: 這是 TTL 邏輯族的元件" },
+                    { text: "C. OPA (運算放大器)", next: "q25_help", log: "Q25錯: 這是類比電路元件" },
+                    { text: "D. Relay (繼電器)", next: "q25_help", log: "Q25錯: 這是傳統機電元件" }
                 ]
             },
             "q25_help": {
-                tag: "💊 提示：紫色長髮",
-                text: "她留著紫色長髮，非常愛吃甜食，生氣的時候臉會鼓起來，最常對芙莉蓮說「芙莉蓮大人，太遲鈍了」。",
+                tag: "💊 救援任務：名字裡找答案",
+                text: "CMOS 的全名是 Complementary Metal-Oxide-Semiconductor。選項中哪一個元件帶有 MOS 這三個字母？",
                 options: [
-                    { text: "A. 費倫", next: "q25", isCorrect: true },
-                    { text: "B. 修塔爾克", next: "q25_help", log: "Q25救錯: 他是紅頭髮的男生啦！" }
+                    { text: "A. MOSFET", next: "q25", isCorrect: true },
+                    { text: "B. BJT", next: "q25_help", log: "Q25救錯: TTL 才是用 BJT 喔！" }
                 ]
             },
 
-            // --- 第 26 關：功率因數 ---
+            // --- 第 26 關：DL 卡諾圖 ---
             "q26": {
-                tag: "第 26 關：交流功率",
-                text: "在計算交流電功率時，常常會看到「功率因數 (Power Factor, cosθ)」這個詞。請問它代表的是什麼意義？",
+                tag: "第 26 關：數位邏輯 (卡諾圖)",
+                text: "卡諾圖 (Karnaugh Map) 在數位邏輯設計中，最主要的用途是什麼？",
                 options: [
-                    { text: "A. 有效功率 (W) 與 視在功率 (VA) 的比值", next: "q27", isCorrect: true },
-                    { text: "B. 虛功率 (VAR) 與 有效功率 (W) 的比值", next: "q26_help", log: "Q26錯: 這是 tanθ" },
-                    { text: "C. 電壓與電流的乘積", next: "q26_help", log: "Q26錯: 這是視在功率" },
-                    { text: "D. 電阻與電抗的比值", next: "q26_help", log: "Q26錯: 這是錯的" }
+                    { text: "A. 簡化布林代數函數，找到最簡邏輯電路", next: "q27", isCorrect: true },
+                    { text: "B. 測量電壓大小", next: "q26_help", log: "Q26錯: 這是三用電表的工作" },
+                    { text: "C. 將類比訊號轉數位", next: "q26_help", log: "Q26錯: 這是 ADC 的工作" },
+                    { text: "D. 製作計時器", next: "q26_help", log: "Q26錯: 這是 555 的工作" }
                 ]
             },
             "q26_help": {
-                tag: "💊 救援任務：真實的發揮",
-                text: "功率因數就像是「效率」。總共供了多少電(視在功率 S)，實際上真正有用來作功的電(有效功率 P)佔了多少比例。所以是誰跟誰的比值？",
+                tag: "💊 救援任務：圖形化工具",
+                text: "當布林代數方程式太長、太複雜的時候，我們會畫一個方格圖，把相鄰的 1 圈起來，藉此省下很多邏輯閘。這是在做什麼？",
                 options: [
-                    { text: "A. 有效功率 / 視在功率", next: "q26", isCorrect: true },
-                    { text: "B. 虛功率 / 有效功率", next: "q26_help", log: "Q26救錯: 虛功率是沒用的廢熱，不能當分子" }
+                    { text: "A. 簡化邏輯", next: "q26", isCorrect: true },
+                    { text: "B. 製作計時器", next: "q26_help", log: "Q26救錯: 卡諾圖不能計時啦" }
                 ]
             },
 
-            // --- 第 27 關：雙瓦特計法 (有效功率) ---
+            // --- 第 27 關：DL XOR閘 ---
             "q27": {
-                tag: "第 27 關：功率量測",
-                text: "使用「雙瓦特計法」來量測三相功率時，如果兩個瓦特計的讀值分別為 W1 與 W2，請問「總有效功率 P_T」該如何計算？",
+                tag: "第 27 關：數位邏輯 (特殊邏輯閘)",
+                text: "對於一個二輸入的互斥或閘 (XOR Gate)，當兩個輸入狀態「相同」時 (例如同為 0 或同為 1)，輸出為何？",
                 options: [
-                    { text: "A. P_T = W1 + W2", next: "q28", isCorrect: true },
-                    { text: "B. P_T = √3 (W1 + W2)", next: "q27_help", log: "Q27錯: 不用乘根號3" },
-                    { text: "C. P_T = W1 - W2", next: "q27_help", log: "Q27錯: 這是算虛功率的一部分" },
-                    { text: "D. P_T = √3 (W1 - W2)", next: "q27_help", log: "Q27錯: 這是算總虛功率的公式" }
+                    { text: "A. 0", next: "q28", isCorrect: true },
+                    { text: "B. 1", next: "q27_help", log: "Q27錯: 輸入相異時才會出 1" },
+                    { text: "C. 保持前次狀態", next: "q27_help", log: "Q27錯: XOR 沒有記憶功能" },
+                    { text: "D. 高阻抗", next: "q27_help", log: "Q27錯: 這是三態閘的特性" }
                 ]
             },
             "q27_help": {
-                tag: "💊 救援任務：最單純的加法",
-                text: "雙瓦特計法最神奇的地方，就是不管線路怎麼接，只要把兩顆電表量到的數字「直接加起來」，就是總有效功率了！",
+                tag: "💊 救援任務：排他性",
+                text: "互斥或(XOR)的特性是「相異出 1，相同出 0」。既然題目說兩個輸入「相同」，那輸出當然是？",
                 options: [
-                    { text: "A. W1 + W2", next: "q27", isCorrect: true },
-                    { text: "B. W1 - W2", next: "q27_help", log: "Q27救錯: 減法是算虛功率用的！" }
+                    { text: "A. 0", next: "q27", isCorrect: true },
+                    { text: "B. 1", next: "q27_help", log: "Q27救錯: 不一樣的時候才會給 1 喔！" }
                 ]
             },
 
-            // --- 第 28 關：雙瓦特計法 (虛功率) ---
+            // --- 第 28 關：DL 全加器 ---
             "q28": {
-                tag: "第 28 關：功率量測",
-                text: "承上題，使用「雙瓦特計法」時，如果我們想知道這台三相機器的「總虛功率 (Q_T)」，公式應該用哪一個？",
+                tag: "第 28 關：數位邏輯 (算術電路)",
+                text: "一個「全加器 (Full Adder)」總共有幾個輸入端？",
                 options: [
-                    { text: "A. Q_T = √3 (W1 - W2)", next: "q29", isCorrect: true },
-                    { text: "B. Q_T = W1 - W2", next: "q28_help", log: "Q28錯: 漏掉根號3" },
-                    { text: "C. Q_T = √3 (W1 + W2)", next: "q28_help", log: "Q28錯: 括號內應該是相減" },
-                    { text: "D. Q_T = W1 + W2", next: "q28_help", log: "Q28錯: 這是總有效功率" }
+                    { text: "A. 3 個", next: "q29", isCorrect: true },
+                    { text: "B. 2 個", next: "q28_help", log: "Q28錯: 這是半加器" },
+                    { text: "C. 4 個", next: "q28_help", log: "Q28錯: 數量不對" },
+                    { text: "D. 1 個", next: "q28_help", log: "Q28錯: 無法相加" }
                 ]
             },
             "q28_help": {
-                tag: "💊 救援任務：虛功率密碼",
-                text: "總有效功率是相加；總「虛」功率則是相減，並且前面要乘上三相系統最愛用的魔術數字「根號3」。",
+                tag: "💊 救援任務：考慮前人的進位",
+                text: "半加器只能加 A 和 B (2個)。全加器為了處理前面算完傳過來的「進位(Carry in)」，必須多加一個輸入。總共幾個？",
                 options: [
-                    { text: "A. √3 × (W1 - W2)", next: "q28", isCorrect: true },
-                    { text: "B. W1 - W2", next: "q28_help", log: "Q28救錯: 忘記根號3了！" }
+                    { text: "A. 3 個 (A, B, Cin)", next: "q28", isCorrect: true },
+                    { text: "B. 2 個", next: "q28_help", log: "Q28救錯: 這樣就變回半加器了" }
                 ]
             },
 
-            // --- 第 29 關：單相三線斷線危機 ---
+            // --- 第 29 關：DL 主從觸發器 ---
             "q29": {
-                tag: "第 29 關：配電危機",
-                text: "在家庭單相三線式 (110/220V) 系統中，如果中間那條「中性線 (N線)」不小心斷掉了，最有可能發生什麼危險？",
+                tag: "第 29 關：數位邏輯 (進階觸發器)",
+                text: "「主從式正反器 (Master-Slave Flip-Flop)」的發明，主要是為了解決位準觸發電路中的哪一種致命問題？",
                 options: [
-                    { text: "A. 接在輕負載(高電阻)那一邊的 110V 家電，電壓會飆高而燒毀", next: "q30", isCorrect: true },
-                    { text: "B. 所有 110V 的家電都會停電", next: "q29_help", log: "Q29錯: 它們會變成串聯在 220V 上，不會停電" },
-                    { text: "C. 220V 的冷氣會瞬間爆炸", next: "q29_help", log: "Q29錯: 冷氣是接在兩條火線，不受中性線斷裂影響" },
-                    { text: "D. 不會有任何危險，只是比較耗電", next: "q29_help", log: "Q29錯: 電壓不平衡會導致火災" }
+                    { text: "A. 競態問題 (Race-Around Condition)", next: "q30", isCorrect: true },
+                    { text: "B. 功率消耗過大", next: "q29_help", log: "Q29錯: 反而用了更多電晶體" },
+                    { text: "C. 頻寬不足", next: "q29_help", log: "Q29錯: 與頻寬無關" },
+                    { text: "D. 扇出 (Fan-out) 能力太弱", next: "q29_help", log: "Q29錯: 這是推動負載的能力" }
                 ]
             },
             "q29_help": {
-                tag: "💊 救援任務：分壓原理",
-                text: "中線斷掉後，兩邊的 110V 家電會變成「串聯」吃 220V 的電。電阻大的（通常是比較小型的電器）分到的電壓會超過 110V，結果就會？",
+                tag: "💊 救援任務：無窮迴圈",
+                text: "在 JK 觸發器 Toggle 狀態下，如果時脈(Clock)維持高電位的時間太長，輸出會在 0 和 1 之間瘋狂來回切換（賽跑）。這稱為什麼問題？",
                 options: [
-                    { text: "A. 電壓飆高燒毀", next: "q29", isCorrect: true },
-                    { text: "B. 平安無事", next: "q29_help", log: "Q29救錯: 插110V的電器吃到180V一定會燒掉！" }
+                    { text: "A. 競態問題 (Race-Around)", next: "q29", isCorrect: true },
+                    { text: "B. 頻寬不足", next: "q29_help", log: "Q29救錯: 這是數位電路特有的邏輯狀態問題" }
                 ]
             },
 
-            // 🐉 第 30 關：最終魔王 (寶可夢神獸)
+            // --- 第 30 關：DL 計數器比較 ---
             "q30": {
-                tag: "🐉 最終關：傳說降臨",
-                text: "最後一題大魔王！在《寶可夢》豐緣地區的傳說中，平息了固拉多與蓋歐卡爭鬥，長年棲息在臭氧層中，且能夠「超級進化(Mega)」的綠色龍型神獸是？（提示：牠也是本次隱藏的 SP 卡主角！）",
+                tag: "第 30 關：數位邏輯 (計數器)",
+                text: "關於「同步計數器」與「非同步計數器」的比較，下列何者正確？",
                 options: [
-                    { text: "A. 烈空坐 (Rayquaza)", next: "end", isCorrect: true },
-                    { text: "B. 超夢 (Mewtwo)", next: "q30_help", log: "Q30錯: 超夢不是龍型，也沒住臭氧層" },
-                    { text: "C. 洛奇亞 (Lugia)", next: "q30_help", log: "Q30錯: 洛奇亞是海之神，住水裡" },
-                    { text: "D. 噴火龍 (Charizard)", next: "q30_help", log: "Q30錯: 噴火龍不是神獸" }
+                    { text: "A. 同步計數器的運作速度較快", next: "q31", isCorrect: true },
+                    { text: "B. 非同步計數器的所有觸發器共用同一個時脈 (Clock)", next: "q30_help", log: "Q30錯: 這是同步的特徵" },
+                    { text: "C. 同步計數器電路較簡單", next: "q30_help", log: "Q30錯: 同步需要較多邏輯閘" },
+                    { text: "D. 兩者速度完全一樣", next: "q30_help", log: "Q30錯: 非同步會有累積延遲" }
                 ]
             },
             "q30_help": {
-                tag: "💊 提示：天空之神",
-                text: "牠是一條長長的綠色飛龍，是寶可夢手遊中玩家最愛去團體戰打的超強神獸。為了這張 SP 卡，選出正確的名字吧！",
+                tag: "💊 救援任務：齊心協力",
+                text: "同步計數器大家統一聽同一個指令(Clock)一起動作；非同步則是一個傳一個(有延遲)。誰的速度比較快？",
                 options: [
-                    { text: "A. 烈空坐", next: "q30", isCorrect: true },
-                    { text: "B. 洛奇亞", next: "q30_help", log: "Q30救錯: 洛奇亞是白色的海神喔！" }
+                    { text: "A. 同步計數器較快", next: "q30", isCorrect: true },
+                    { text: "B. 非同步計數器較快", next: "q30_help", log: "Q30救錯: 一個傳一個一定比較慢啦" }
+                ]
+            },
+
+            // ⚔️ 第 31 關：AOT 3 ---
+            "q31": {
+                tag: "⚔️ 第 31 關：大腦休息 (進擊的巨人)",
+                text: "艾連的父親古利夏·葉卡，在被攻破的西干席納區家中的「地下室」裡，留下了什麼關鍵物品給艾連？",
+                options: [
+                    { text: "A. 揭示牆外世界真相的筆記本與照片", next: "q32", isCorrect: true },
+                    { text: "B. 一套無敵的立體機動裝置", next: "q31_help", log: "Q31錯: 這是軍團發的" },
+                    { text: "C. 變成巨人的針劑", next: "q31_help", log: "Q31錯: 針劑在森林裡就已經打給艾連了" },
+                    { text: "D. 始祖巨人的結晶", next: "q31_help", log: "Q31錯: 沒有這個東西" }
+                ]
+            },
+            "q31_help": {
+                tag: "💊 提示：世界的真相",
+                text: "他們千辛萬苦抵達地下室，打開抽屜，發現了牆內人類從未見過的「相片」，並得知牆外還有人類存在。所以是？",
+                options: [
+                    { text: "A. 筆記本與照片", next: "q31", isCorrect: true },
+                    { text: "B. 變身針劑", next: "q31_help", log: "Q31救錯: 爸爸早就把針劑打在艾連身上讓他吃掉自己了" }
+                ]
+            },
+
+            // --- 第 32 關：PL 陣列索引 ---
+            "q32": {
+                tag: "第 32 關：程式設計 (陣列)",
+                text: "在 C/C++ 語言中，宣告陣列 `int arr[5];` 後，該陣列的「第一個」元素的索引值(Index)為何？",
+                options: [
+                    { text: "A. 0", next: "q33", isCorrect: true },
+                    { text: "B. 1", next: "q32_help", log: "Q32錯: 程式語言索引是從 0 開始" },
+                    { text: "C. -1", next: "q32_help", log: "Q32錯: 索引不能為負" },
+                    { text: "D. 5", next: "q32_help", log: "Q32錯: 這是越界了" }
+                ]
+            },
+            "q32_help": {
+                tag: "💊 救援任務：從零開始",
+                text: "電腦科學的計數習慣跟人類不一樣，我們是從 1 開始數，但陣列的編號永遠是「從 0 開始」！",
+                options: [
+                    { text: "A. 0", next: "q32", isCorrect: true },
+                    { text: "B. 1", next: "q32_help", log: "Q32救錯: 記住，工程師是從 0 開始算數的" }
+                ]
+            },
+
+            // --- 第 33 關：PL 字串結尾 ---
+            "q33": {
+                tag: "第 33 關：程式設計 (字串)",
+                text: "在 C 語言中，字元陣列若要被視為正常的「字串 (String)」，其結尾必須包含哪一個特殊字元？",
+                options: [
+                    { text: "A. '\\0' (Null字元)", next: "q34", isCorrect: true },
+                    { text: "B. '\\n' (換行字元)", next: "q33_help", log: "Q33錯: 這是用來斷行的" },
+                    { text: "C. ' ' (空白字元)", next: "q33_help", log: "Q33錯: 空白只是一般字元" },
+                    { text: "D. '.' (句號)", next: "q33_help", log: "Q33錯: 電腦不看英文文法" }
+                ]
+            },
+            "q33_help": {
+                tag: "💊 救援任務：字串的煞車",
+                text: "電腦必須知道字串在哪裡結束，否則會印出一堆亂碼。我們必須在結尾放一個代表「空(Null)」的特殊字元 `\\0` 來當煞車。",
+                options: [
+                    { text: "A. '\\0'", next: "q33", isCorrect: true },
+                    { text: "B. '\\n'", next: "q33_help", log: "Q33救錯: \\n 是鍵盤上的 Enter 鍵啦" }
+                ]
+            },
+
+            // --- 第 34 關：PL 無回傳值 ---
+            "q34": {
+                tag: "第 34 關：程式設計 (函式)",
+                text: "當自訂函式執行完畢後「不需要回傳任何結果」給主程式時，函式的回傳型態應宣告為？",
+                options: [
+                    { text: "A. void", next: "q35", isCorrect: true },
+                    { text: "B. int", next: "q34_help", log: "Q34錯: int 代表必須回傳整數" },
+                    { text: "C. null", next: "q34_help", log: "Q34錯: null 通常用於指標" },
+                    { text: "D. float", next: "q34_help", log: "Q34錯: 代表要回傳小數" }
+                ]
+            },
+            "q34_help": {
+                tag: "💊 救援任務：空無一物",
+                text: "在程式界，代表「空、無」的英文單字，常常出現在函式最前面。這個字叫做 void！",
+                options: [
+                    { text: "A. void", next: "q34", isCorrect: true },
+                    { text: "B. int", next: "q34_help", log: "Q34救錯: int 代表一定要 return 數字喔" }
+                ]
+            },
+
+            // --- 第 35 關：PL 全域變數預設值 ---
+            "q35": {
+                tag: "第 35 關：程式設計 (變數作用域)",
+                text: "在程式最上方宣告的「全域變數 (Global variable)」，如果沒有手動給予初始值，編譯器預設會給它什麼值？",
+                options: [
+                    { text: "A. 0", next: "q36", isCorrect: true },
+                    { text: "B. 垃圾值 (Garbage value)", next: "q35_help", log: "Q35錯: 這是區域變數的特性" },
+                    { text: "C. -1", next: "q35_help", log: "Q35錯: 不會給 -1" },
+                    { text: "D. 程式當機", next: "q35_help", log: "Q35錯: 語法合法" }
+                ]
+            },
+            "q35_help": {
+                tag: "💊 救援任務：全域的禮遇",
+                text: "區域變數(在函式內)如果沒給值會是一堆垃圾亂碼；但全域變數享有 VIP 待遇，系統會自動幫它「清空歸零」。",
+                options: [
+                    { text: "A. 0", next: "q35", isCorrect: true },
+                    { text: "B. 垃圾值", next: "q35_help", log: "Q35救錯: 全域變數很乾淨，不會有垃圾喔！" }
+                ]
+            },
+
+            // --- 第 36 關：PL 變數優先權 ---
+            "q36": {
+                tag: "第 36 關：程式設計 (變數作用域)",
+                text: "如果全域變數與區域變數「同名」 (例如都叫 count)，在區域變數所在的函式內部，編譯器會優先使用哪一個變數？",
+                options: [
+                    { text: "A. 區域變數優先", next: "q37", isCorrect: true },
+                    { text: "B. 全域變數優先", next: "q36_help", log: "Q36錯: 強龍不壓地頭蛇" },
+                    { text: "C. 兩個加起來", next: "q36_help", log: "Q36錯: 變數不可能自動相加" },
+                    { text: "D. 直接報錯無法編譯", next: "q36_help", log: "Q36錯: 這是允許的，只是會覆蓋可見度" }
+                ]
+            },
+            "q36_help": {
+                tag: "💊 救援任務：強龍不壓地頭蛇",
+                text: "在自己的地盤(大括號內)，當然是自己人(區域變數)說了算！這叫做變數的遮蔽效應。",
+                options: [
+                    { text: "A. 區域變數優先", next: "q36", isCorrect: true },
+                    { text: "B. 全域變數優先", next: "q36_help", log: "Q36救錯: 地頭蛇(區域)才是老大啦！" }
+                ]
+            },
+
+            // --- 第 37 關：PL 遞迴 ---
+            "q37": {
+                tag: "第 37 關：程式設計 (進階函式)",
+                text: "一個函式在執行的過程中，又「呼叫自己本身」，這種程式設計技巧稱為什麼？",
+                options: [
+                    { text: "A. 遞迴 (Recursion)", next: "q38", isCorrect: true },
+                    { text: "B. 迭代 (Iteration)", next: "q37_help", log: "Q37錯: 這是使用 for/while 迴圈" },
+                    { text: "C. 多載 (Overloading)", next: "q37_help", log: "Q37錯: 這是同名但參數不同的函式" },
+                    { text: "D. 覆寫 (Overriding)", next: "q37_help", log: "Q37錯: 這是物件導向的概念" }
+                ]
+            },
+            "q37_help": {
+                tag: "💊 救援任務：俄羅斯娃娃",
+                text: "就像俄羅斯娃娃一樣，打開裡面還有一個自己；函式呼叫自己，在程式設計中，這招叫做「遞迴」。",
+                options: [
+                    { text: "A. 遞迴 (Recursion)", next: "q37", isCorrect: true },
+                    { text: "B. 迭代 (Iteration)", next: "q37_help", log: "Q37救錯: 迭代是寫迴圈的意思" }
+                ]
+            },
+
+            // --- 第 38 關：PL 取址運算子 ---
+            "q38": {
+                tag: "第 38 關：程式設計 (指標)",
+                text: "若宣告 `int a = 10;`，想取得變數 a 儲存在記憶體中的「位址 (Address)」，要使用哪一個運算子？",
+                options: [
+                    { text: "A. &", next: "q39", isCorrect: true },
+                    { text: "B. *", next: "q38_help", log: "Q38錯: 這是取值(解參照)運算子" },
+                    { text: "C. %", next: "q38_help", log: "Q38錯: 這是取餘數" },
+                    { text: "D. ->", next: "q38_help", log: "Q38錯: 這是指標存取結構用的" }
+                ]
+            },
+            "q38_help": {
+                tag: "💊 救援任務：Address的符號",
+                text: "英文的 And 符號 `&`，在 C/C++ 語言的指標世界裡，叫做「取址運算子 (Address-of)」。",
+                options: [
+                    { text: "A. &", next: "q38", isCorrect: true },
+                    { text: "B. *", next: "q38_help", log: "Q38救錯: * 是用來解開位址拿內容物的" }
+                ]
+            },
+
+            // --- 第 39 關：PL 取值運算子 ---
+            "q39": {
+                tag: "第 39 關：程式設計 (指標)",
+                text: "承上題，若已知一個指標變數 `p` 裡面存了某人的位址，我們想取出那個位址裡的「內容值」，要用哪一個運算子？",
+                options: [
+                    { text: "A. *", next: "q40", isCorrect: true },
+                    { text: "B. &", next: "q39_help", log: "Q39錯: 這是取址" },
+                    { text: "C. @", next: "q39_help", log: "Q39錯: C/C++ 沒有這個用法" },
+                    { text: "D. #", next: "q39_help", log: "Q39錯: 這是巨集指令" }
+                ]
+            },
+            "q39_help": {
+                tag: "💊 救援任務：解開星星的封印",
+                text: "指標變數的宣告跟取值都是用同一個符號，那就是鍵盤上的星號 `*` (解參照運算子)。",
+                options: [
+                    { text: "A. *", next: "q39", isCorrect: true },
+                    { text: "B. &", next: "q39_help", log: "Q39救錯: 這是用來拿地址的！" }
+                ]
+            },
+
+            // --- 第 40 關：PL 陣列參數傳遞 ---
+            "q40": {
+                tag: "第 40 關：程式設計 (函式與陣列)",
+                text: "將「一維陣列」當作參數傳遞給函式時，實際上傳遞給函式的是什麼東西？",
+                options: [
+                    { text: "A. 陣列第一個元素的記憶體位址 (指標)", next: "q41", isCorrect: true },
+                    { text: "B. 整個陣列所有元素的備份", next: "q40_help", log: "Q40錯: 這樣太耗費記憶體了" },
+                    { text: "C. 陣列的長度", next: "q40_help", log: "Q40錯: 長度通常要另外傳一個參數" },
+                    { text: "D. 陣列最後一個元素", next: "q40_help", log: "Q40錯: 完全無意義" }
+                ]
+            },
+            "q40_help": {
+                tag: "💊 救援任務：傳遞門牌號碼",
+                text: "陣列可能有一萬筆資料，拷貝一份給函式太浪費時間了。所以電腦很聰明，只給函式「第一筆資料的門牌號碼(位址)」，讓函式自己去找。",
+                options: [
+                    { text: "A. 記憶體位址", next: "q40", isCorrect: true },
+                    { text: "B. 整個陣列備份", next: "q40_help", log: "Q40救錯: 這樣電腦會跑很慢喔" }
+                ]
+            },
+
+            // ⚔️ 第 41 關：AOT 4 ---
+            "q41": {
+                tag: "⚔️ 第 41 關：大腦休息 (進擊的巨人)",
+                text: "在九大巨人中，「進擊的巨人」擁有一項超越時間、非常獨特的特殊能力，這也是推動整個故事發展的關鍵。請問是哪項能力？",
+                options: [
+                    { text: "A. 能看見「未來繼承者」的記憶", next: "q42", isCorrect: true },
+                    { text: "B. 能無條件控制所有無垢巨人", next: "q41_help", log: "Q41錯: 這是始祖巨人的能力" },
+                    { text: "C. 全身可以覆蓋超硬水晶裝甲", next: "q41_help", log: "Q41錯: 這是盔甲或女巨人的特性" },
+                    { text: "D. 能夠長出翅膀在天空飛", next: "q41_help", log: "Q41錯: 這是後期某個顎之巨人的變異" }
+                ]
+            },
+            "q41_help": {
+                tag: "💊 提示：超越時間的意志",
+                text: "進擊的巨人之所以永遠為了自由而戰，是因為每一任繼承者，都會被某個「未來」的人的記憶所引導。這是什麼能力？",
+                options: [
+                    { text: "A. 看見未來繼承者的記憶", next: "q41", isCorrect: true },
+                    { text: "B. 控制所有無垢巨人", next: "q41_help", log: "Q41救錯: 這是王血+始祖才能辦到的喔！" }
+                ]
+            },
+
+            // --- 第 42 關：混合 (位元 AND) ---
+            "q42": {
+                tag: "第 42 關：軟硬整合 (位元運算)",
+                text: "執行位元及 (Bitwise AND) 運算：`5 & 3` 的十進制結果為何？(提示：5是0101，3是0011)",
+                options: [
+                    { text: "A. 1", next: "q43", isCorrect: true },
+                    { text: "B. 7", next: "q42_help", log: "Q42錯: 這是位元 OR (|) 的結果" },
+                    { text: "C. 8", next: "q42_help", log: "Q42錯: 這不是普通的加法" },
+                    { text: "D. 6", next: "q42_help", log: "Q42錯: 這是 XOR (^) 的結果" }
+                ]
+            },
+            "q42_help": {
+                tag: "💊 救援任務：上下對齊",
+                text: "0101 和 0011 上下對齊做 AND (兩個都是1才是1)。得出二進制 0001，也就是十進制的多少？",
+                options: [
+                    { text: "A. 1", next: "q42", isCorrect: true },
+                    { text: "B. 7", next: "q42_help", log: "Q42救錯: 7 是 OR 才會跑出來的 0111" }
+                ]
+            },
+
+            // --- 第 43 關：混合 (位元 OR) ---
+            "q43": {
+                tag: "第 43 關：軟硬整合 (位元運算)",
+                text: "承上題，若改成執行位元或 (Bitwise OR) 運算：`5 | 3` 的十進制結果為何？",
+                options: [
+                    { text: "A. 7", next: "q44", isCorrect: true },
+                    { text: "B. 1", next: "q43_help", log: "Q43錯: 這是 AND" },
+                    { text: "C. 8", next: "q43_help", log: "Q43錯: 不是加法" },
+                    { text: "D. 6", next: "q43_help", log: "Q43錯: 這是 XOR" }
+                ]
+            },
+            "q43_help": {
+                tag: "💊 救援任務：有1就是1",
+                text: "0101 和 0011 上下對齊做 OR (只要有1就是1)。得出二進制 0111，也就是 4+2+1。答案是？",
+                options: [
+                    { text: "A. 7", next: "q43", isCorrect: true },
+                    { text: "B. 6", next: "q43_help", log: "Q43救錯: 第一個 bit (1|1) 也是 1 喔！" }
+                ]
+            },
+
+            // --- 第 44 關：混合 (複合運算) ---
+            "q44": {
+                tag: "第 44 關：程式設計 (簡寫語法)",
+                text: "程式敘述 `x += 3;` 完全等價於下列哪一種寫法？",
+                options: [
+                    { text: "A. x = x + 3;", next: "q45", isCorrect: true },
+                    { text: "B. x = 3 + 3;", next: "q44_help", log: "Q44錯: 丟失了 x 原本的值" },
+                    { text: "C. x = x + 1;", next: "q44_help", log: "Q44錯: 這是 x++" },
+                    { text: "D. x = 3;", next: "q44_help", log: "Q44錯: 這是直接指派" }
+                ]
+            },
+            "q44_help": {
+                tag: "💊 救援任務：加並指派",
+                text: "`+=` 的意思是：把右邊的數字，加上原本的自己，然後重新存回自己身上。也就是 `自己 = 自己 + 3`。",
+                options: [
+                    { text: "A. x = x + 3;", next: "q44", isCorrect: true },
+                    { text: "B. x = 3;", next: "q44_help", log: "Q44救錯: 這樣寫 x 原本的數字就不見了" }
+                ]
+            },
+
+            // ⚔️ 第 45 關：AOT 5 (最終魔王) ---
+            "q45": {
+                tag: "🏆 最終關：進擊的巨人 (結局)",
+                text: "堅持到最後了！在《進擊的巨人》最終季，艾連·葉卡發動了毀滅世界的「地鳴 (The Rumbling)」。他這麼做的最核心最終目的是什麼？",
+                options: [
+                    { text: "A. 驅逐島外所有的威脅，讓帕拉迪島的朋友能活下去", next: "end", isCorrect: true },
+                    { text: "B. 單純想成為世界的獨裁統治者", next: "q45_help", log: "Q45錯: 艾連對統治世界沒有興趣" },
+                    { text: "C. 為了奪取其他巨人的力量", next: "q45_help", log: "Q45錯: 他已經是最強的了" },
+                    { text: "D. 被尤米爾控制失去了理智", next: "q45_help", log: "Q45錯: 這是他自己選擇的自由意志" }
+                ]
+            },
+            "q45_help": {
+                tag: "💊 提示：殘酷的溫柔",
+                text: "艾連看見了世界的惡意，他知道只要島外還有人，帕拉迪島就永遠會被攻擊。他選擇背負罪惡，把外面的世界踏平，全是為了保護誰？",
+                options: [
+                    { text: "A. 保護島上的同伴", next: "q45", isCorrect: true },
+                    { text: "B. 當世界國王", next: "q45_help", log: "Q45救錯: 艾連是追求自由，不是權力啦！" }
                 ]
             }
         };
@@ -1211,4 +1510,5 @@
         }
     </script>
 </body>
+
 </html>
